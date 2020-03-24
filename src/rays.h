@@ -1,6 +1,11 @@
 #pragma once
+
+#ifdef CREATEDELL_API_DU
+#else                                                                            
+#define CREATEDELL_API_DU _declspec(dllimport)
+#endif 
 #include "node.h"
-class rays
+class CREATEDELL_API_DU rays
 {
 private:
 	node start, n;
@@ -17,5 +22,5 @@ public:
 	double getK();
 	bool getExitK();
 	bool judge(node n);
+	bool operator ==(const rays& other);
 };
-

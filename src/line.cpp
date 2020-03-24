@@ -1,11 +1,11 @@
-#include <geometry.h>
-#include<math.h>
-line::line()
+#include "pch.h"
+#include "line.h"
+_declspec(dllexport) line::line()
 {
 
 }
 
-line::line(node m, node n)
+_declspec(dllexport) line::line(node m, node n)
 {
 	double y1, y2, x1, x2;
 	this->node1 = m;
@@ -18,7 +18,7 @@ line::line(node m, node n)
 	this->b = x2 - x1;
 	this->c = x1 * y2 - x2 * y1;
 	this->k = 0;
-    if (fabs(x1 - x2)<= 1e-5 ) {
+	if (x1 == x2) {
 		this->exitK = false;
 	}
 	else {
@@ -27,41 +27,46 @@ line::line(node m, node n)
 	}
 }
 
-node line::getNode1()
+node _declspec(dllexport) line::getNode1()
 {
 	return this->node1;
 }
 
-node line::getNode2()
+node _declspec(dllexport) line::getNode2()
 {
 	return this->node2;
 }
 
-double line::getA()
+double _declspec(dllexport) line::getA()
 {
 	return this->a;
 }
 
-double line::getB()
+double _declspec(dllexport) line::getB()
 {
 	return this->b;
 }
 
-double line::getC()
+double _declspec(dllexport) line::getC()
 {
 	return this->c;
 }
 
-double line::getK()
+double _declspec(dllexport) line::getK()
 {
 	return this->k;
 }
 
-bool line::getExitK()
+bool _declspec(dllexport) line::getExitK()
 {
 	return this->exitK;
 }
-bool line::judge(node n)
+bool _declspec(dllexport) line::judge(node n)
 {
 	return true;
+}
+bool _declspec(dllexport) line::operator ==(const line& other)
+{
+	if (a == other.a && b == other.b && c == other.c) return true;
+	else return false;
 }

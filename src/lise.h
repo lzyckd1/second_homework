@@ -1,6 +1,10 @@
 #pragma once
+#ifdef CREATEDELL_API_DU
+#else                                                                            
+#define CREATEDELL_API_DU _declspec(dllimport)
+#endif 
 #include "node.h"
-class lise
+class CREATEDELL_API_DU lise
 {
 private:
 	node node1, node2;
@@ -17,5 +21,5 @@ public:
 	double getK();
 	bool getExitK();
 	bool judge(node n);
+	bool operator ==(const lise& other);
 };
-

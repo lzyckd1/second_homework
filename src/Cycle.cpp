@@ -1,20 +1,28 @@
-#include<geometry.h>
-Cycle::Cycle()
+#include "pch.h"
+#include "Cycle.h"
+
+_declspec(dllexport) Cycle::Cycle()
 {
 
 }
-Cycle::Cycle(node n, double r)
+_declspec(dllexport) Cycle::Cycle(node n, double r)
 {
 	this->c = n;
 	this->r = r;
 }
 
-node Cycle::getC()
+node _declspec(dllexport) Cycle::getC()
 {
 	return this->c;
 }
 
-double Cycle::getR()
+double _declspec(dllexport) Cycle::getR()
 {
 	return this->r;
+}
+
+bool _declspec(dllexport) Cycle::operator ==(const Cycle& other)
+{
+	if (c == other.c && r == other.r) return true;
+	else return false;
 }
